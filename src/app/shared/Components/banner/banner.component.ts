@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class BannerComponent implements OnInit {
   @Input() title: String = 'No Title';
+  @Input() subtitle: String = 'Bitte kontaktieren Sie die Administratioren für weitere Informationen.';
 
   constructor() { }
 

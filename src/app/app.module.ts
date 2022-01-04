@@ -9,6 +9,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ToolbarComponent } from '../toolbar/toolbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { SharedModule } from './shared/shared.module';
+import { FindingsModule } from './findings/findings.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     MatToolbarModule,
     HomeModule,
+    FindingsModule,
     SharedModule
   ],
   providers: [],

@@ -1,1 +1,14 @@
-<micro-banner [title]="'Herzlich Willkommen!'"></micro-banner>
+<div id="homeComponent">
+    <micro-banner [title]="'Herzlich Willkommen!'" [subtitle]="'Untertitel'"></micro-banner>
+    <mat-card id="createFindingCard">
+        <mat-card-title>
+            Das ist der Titel
+        </mat-card-title>
+        <mat-card-content>
+            Das ist der Content
+        </mat-card-content>
+        <mat-card-actions align="start">
+            <button mat-raised-button>anlegen</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

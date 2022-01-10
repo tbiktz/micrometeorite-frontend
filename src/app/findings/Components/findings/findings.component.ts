@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { APIClient } from 'src/app/api';
+import { MicrometeoriteFind } from 'src/app/api/models';
 
 @Component({
   selector: 'micro-findings',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./findings.component.less']
 })
 export class FindingsComponent implements OnInit {
+  findings: MicrometeoriteFind[] = [];
 
-  constructor() { }
+  constructor(private apiClient: APIClient) { }
 
   ngOnInit(): void {
+    this.apiClient.getAllMicrometeoriteFinds().subscribe(findings => {
+      this.findings = findings;
+      console.log(this.findings);
+    });
   }
 
 }

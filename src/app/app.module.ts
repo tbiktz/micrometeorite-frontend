@@ -10,6 +10,8 @@ import { ToolbarComponent } from '../toolbar/toolbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { SharedModule } from './shared/shared.module';
 import { FindingsModule } from './findings/findings.module';
+import { HttpClientModule } from '@angular/common/http';
+import { APIClientModule } from './api';
 
 @NgModule({
   declarations: [
@@ -20,8 +22,12 @@ import { FindingsModule } from './findings/findings.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatToolbarModule,
+    APIClientModule.forRoot({
+      domain: 'https://micrometeorite-rest-api.herokuapp.com/micrometeorite/api/v1/'
+    }),
     HomeModule,
     FindingsModule,
     SharedModule

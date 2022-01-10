@@ -5,6 +5,8 @@ import { FindingsListElementComponent } from './Components/findings-list-element
 import { SharedModule } from '../shared/shared.module';
 import { FindingsComponent } from './Components/findings/findings.component';
 import {MatListModule} from '@angular/material/list';
+import { APIClientModule } from '../api';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -17,6 +19,7 @@ import {MatListModule} from '@angular/material/list';
   imports: [
     CommonModule,
     SharedModule,
+    MatTableModule,
     MatListModule
   ]
 })

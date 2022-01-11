@@ -15,7 +15,6 @@ export class FindingsComponent implements OnInit {
   ngOnInit(): void {
     this.apiClient.getAllMicrometeoriteFinds().subscribe(findings => {
       this.findings = findings;
-      console.log(this.findings);
     });
   }
 

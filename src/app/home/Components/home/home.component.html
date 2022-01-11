@@ -4,8 +4,11 @@
         <mat-card-title>
             Fund anlegen
         </mat-card-title>
+        <mat-card-subtitle>
+            Über diese Karte können Sie einen Fund anlegen.
+        </mat-card-subtitle>
         <mat-card-actions align="start">
-            <button mat-raised-button (click)="openDialog()">anlegen</button>
+            <button mat-raised-button [routerLink]="['/erstellen']">anlegen</button>
         </mat-card-actions>
     </mat-card>
 </div>

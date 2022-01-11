@@ -1,0 +1,193 @@
+<mat-stepper #stepper [linear]="true" orientation="horizontal">
+    <mat-step [stepControl]="imageForm">
+        <ng-template matStepLabel>Bilder auswählen</ng-template>
+        <form [formGroup]="imageForm">
+            <div formArrayName="images">
+                <mat-card class="card m-2 p-2" *ngFor="let image of imagesFormArray.controls; let i = index"
+                    [formGroupName]="i">
+                    <mat-card-title align="end">
+                        <button mat-icon-button (click)="removeImageForm(i)">
+                            <mat-icon>remove</mat-icon>
+                        </button>
+                    </mat-card-title>
+                    <mat-card-content>
+                        <div class="d-flex flex-column justify-content-around">
+                            <div class="p-2">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Fotograf</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+                            <!--<div class="p-2" [formGroup]="photographer">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Vorname</mat-label>
+                                    <input matInput formControlName='firstname'>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Name</mat-label>
+                                    <input matInput formControlName='name'>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Geburtstag</mat-label>
+                                    <input matInput formControlName='birthday'>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Straße</mat-label>
+                                    <input matInput formControlName='street'>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Ort</mat-label>
+                                    <input matInput formControlName='location'>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Postleitzahl</mat-label>
+                                    <input matInput formControlName='zipcode'>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Land</mat-label>
+                                    <input matInput formControlName='country'>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput formControlName='email'>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Telefon</mat-label>
+                                    <input matInput formControlName='phonenumber'>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Webseite</mat-label>
+                                    <input matInput formControlName='website'>
+                                </mat-form-field>
+                            </div>-->
+                            <div class="p-2">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Aufnahmeinstrument</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Vergrößerung</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Aufnahmedatum</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+                            <div class="p-2">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Kamera</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Objektiv</mat-label>
+                                    <input matInput>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column justify-content-between">
+                            <div class="p-2">
+                                <button mat-stroked-button (click)="fileUpload.click()">Datei auswählen</button>
+                                <input type="file" class="file-input" formControlName="image"
+                                    (change)="onFileChange($event, i)" #fileUpload>
+                                {{imagesFormArray.at(i).get("image")?.value || "Keine Datei ausgewählt."}}
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+                <button mat-icon-button (click)="addImageForm()">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+        </form>
+        <div>
+            <button mat-button matStepperNext
+                [disabled]="imagesFormArray.invalid || imagesFormArray.length < 1">weiter</button>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="findingFormGroup">
+        <form [formGroup]="findingFormGroup">
+            <ng-template matStepLabel>Erfassung der Daten zum Fund</ng-template>
+            <div class="row">
+                <div class="col-auto">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Datum</mat-label>
+                        <input matInput placeholder="dd.MM.yyyy" formControlName="micrometeoriteFindDate">
+                    </mat-form-field>
+                </div>
+                <div class="col-auto">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Erfasser</mat-label>
+                        <input matInput placeholder="Last name, First name"
+                            formControlName="micrometeoriteFindRecorder">
+                    </mat-form-field>
+                </div>
+                <div class="col-auto">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Finder</mat-label>
+                        <input matInput placeholder="Name, Vorname" formControlName="micrometeoriteFindFinder">
+                    </mat-form-field>
+                </div>
+                <div class="col-auto">
+                    <mat-form-field appearance="fill">
+                        <mat-label>GPS-Daten</mat-label>
+                        <input matInput placeholder="Breite/Länge" formControlName="micrometeoriteFindCoordinates">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-auto">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Ort</mat-label>
+                        <input matInput placeholder="Nürnberger Burggraben" formControlName="micrometeoriteFindPlace">
+                    </mat-form-field>
+                </div>
+                <div class="col-auto">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Beschreibung</mat-label>
+                        <input matInput placeholder="Beschreibung" formControlName="micrometeoriteFindPlaceDescription">
+                    </mat-form-field>
+                </div>
+                <div class="col-auto">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Form</mat-label>
+                        <input matInput placeholder="rund" formControlName="micrometeoriteForm">
+                    </mat-form-field>
+                </div>
+                <div class="col-auto">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Gewicht</mat-label>
+                        <input matInput placeholder="Gewicht" formControlName="micrometeoriteWeight">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-auto">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Chemische Zusammensetzung</mat-label>
+                        <input matInput placeholder="Zusammensetzung"
+                            formControlName="micrometeoriteChemicalComposition">
+                    </mat-form-field>
+                </div>
+                <div class="col-auto">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Kommentar</mat-label>
+                        <input matInput placeholder="Kommentar" formControlName="micrometeoriteFindComment">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div>
+                <button mat-button matStepperNext [disabled]="findingFormGroup.invalid">weiter</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Ergebnis</ng-template>
+        <p>Das System meldet folgendes Ergebnis.</p>
+        <div>
+            <button mat-button matStepperPrevious>zurück</button>
+            <button mat-button (click)="stepper.reset()">zurücksetzen</button>
+            <button mat-button (click)="save()">speichern</button>
+        </div>
+    </mat-step>
+</mat-stepper>

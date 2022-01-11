@@ -1,23 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
-import { MicrometeoriteFind } from 'src/app/api/models';
-import { getBase64 } from '../../shared/Helpers/helper';
-import { CreateFindingStepperService } from '../../shared/Services/create-finding-stepper.service';
+import { getBase64 } from 'src/app/home/shared/Helpers/helper';
+import { CreateFindingStepperService } from 'src/app/home/shared/Services/create-finding-stepper.service';
 
 @Component({
-  selector: 'micro-dialog',
-  templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.less']
+  selector: 'micro-create-finding',
+  templateUrl: './create-finding.component.html',
+  styleUrls: ['./create-finding.component.less']
 })
-export class DialogComponent implements OnInit {
+export class CreateFindingComponent implements OnInit {
   //@ts-ignore
   imageForm: FormGroup;
   //@ts-ignore
   images: any[];
   //@ts-ignore
   findingFormGroup: FormGroup;
-  //@ts-ignore
-  secondFormGroup: FormGroup;
   selectedFiles: File[] = [];
   //@ts-ignore
   data: MicrometeoriteFind;
@@ -25,7 +22,20 @@ export class DialogComponent implements OnInit {
 
   constructor(private _fb: FormBuilder,
     private createFindingService: CreateFindingStepperService) { }
-
+/**
+ * micrometeoriteFindFinder: this._fb.group({
+        birthday: [''],
+        country: [''],
+        email: [''],
+        firstname: [''],
+        location: [''],
+        name: [''],
+        phonenumber: [''],
+        street: [''],
+        website: [''],
+        zipcode: ['']
+      }),
+ */
   ngOnInit(): void {
     this.images = [];
     this.imageForm = this._fb.group({
@@ -36,10 +46,18 @@ export class DialogComponent implements OnInit {
       this.imageCount = finding?.images?.length;
     });
     this.findingFormGroup = this._fb.group({
-      firstCtrl: ['', Validators.required],
-    });
-    this.secondFormGroup = this._fb.group({
-      secondCtrl: ['', Validators.required],
+      micrometeoriteChemicalComposition: [''],
+      micrometeoriteDiameter: [''],
+      micrometeoriteFindComment: [''],
+      micrometeoriteFindCoordinates: [''],
+      micrometeoriteFindDate: [''],
+      micrometeoriteFindFinder: [''],
+      micrometeoriteFindId: [''],
+      micrometeoriteFindPlace: [''],
+      micrometeoriteFindPlaceDescription: [''],
+      micrometeoriteFindRecorder: [''],
+      micrometeoriteForm: [''],
+      micrometeoriteWeight: ['']
     });
   }
 
@@ -73,6 +91,9 @@ export class DialogComponent implements OnInit {
   removeImageForm(imageIndex: number): void {
     this.imagesFormArray.removeAt(imageIndex);
     this.images.splice(imageIndex, 1);
+    if (this.imagesFormArray.length <= 0) {
+      this.imagesFormArray.setErrors({ 'incorrect': true });
+    }
   }
 
   onFileChange(event: any, index: number): void {

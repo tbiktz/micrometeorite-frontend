@@ -4,31 +4,21 @@ import { HomeComponent } from './Components/home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import {MatDialogModule} from '@angular/material/dialog';
-import { DialogComponent } from './Components/dialog/dialog.component';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatIconModule} from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   declarations: [
-    HomeComponent,
-    DialogComponent
+    HomeComponent
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule,
     MatCardModule,
     MatButtonModule,
-    SharedModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDialogModule,
-    MatStepperModule,
-    MatIconModule
+    SharedModule
   ],
   exports: [ HomeComponent ]
 })

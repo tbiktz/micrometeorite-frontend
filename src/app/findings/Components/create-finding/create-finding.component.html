@@ -11,82 +11,119 @@
                         </button>
                     </mat-card-title>
                     <mat-card-content>
-                        <div class="d-flex flex-column justify-content-around">
-                            <div class="p-2">
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Fotograf</mat-label>
-                                    <input matInput>
-                                </mat-form-field>
+                        <div class="container">
+                            <div class="container" [formGroup]="getPhotographerFormGroup(i)">
+                                <div class="row">
+                                    <h2>Fotograf</h2>
+                                </div>
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Vorname</mat-label>
+                                            <input matInput formControlName='firstname'>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-auto">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Name</mat-label>
+                                            <input matInput formControlName='name'>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-auto">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Geburtstag</mat-label>
+                                            <input matInput formControlName='birthday'>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-auto">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Straße</mat-label>
+                                            <input matInput formControlName='street'>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Ort</mat-label>
+                                            <input matInput formControlName='location'>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-auto">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Postleitzahl</mat-label>
+                                            <input matInput formControlName='zipcode'>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-auto">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Land</mat-label>
+                                            <input matInput formControlName='country'>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-auto">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Email</mat-label>
+                                            <input matInput formControlName='email'>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-auto">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Telefon</mat-label>
+                                            <input matInput formControlName='phonenumber'>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-auto">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Webseite</mat-label>
+                                            <input matInput formControlName='website'>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
                             </div>
-                            <!--<div class="p-2" [formGroup]="photographer">
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Vorname</mat-label>
-                                    <input matInput formControlName='firstname'>
-                                </mat-form-field>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Name</mat-label>
-                                    <input matInput formControlName='name'>
-                                </mat-form-field>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Geburtstag</mat-label>
-                                    <input matInput formControlName='birthday'>
-                                </mat-form-field>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Straße</mat-label>
-                                    <input matInput formControlName='street'>
-                                </mat-form-field>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Ort</mat-label>
-                                    <input matInput formControlName='location'>
-                                </mat-form-field>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Postleitzahl</mat-label>
-                                    <input matInput formControlName='zipcode'>
-                                </mat-form-field>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Land</mat-label>
-                                    <input matInput formControlName='country'>
-                                </mat-form-field>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Email</mat-label>
-                                    <input matInput formControlName='email'>
-                                </mat-form-field>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Telefon</mat-label>
-                                    <input matInput formControlName='phonenumber'>
-                                </mat-form-field>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Webseite</mat-label>
-                                    <input matInput formControlName='website'>
-                                </mat-form-field>
-                            </div>-->
-                            <div class="p-2">
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Aufnahmeinstrument</mat-label>
-                                    <input matInput>
-                                </mat-form-field>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Vergrößerung</mat-label>
-                                    <input matInput>
-                                </mat-form-field>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Aufnahmedatum</mat-label>
-                                    <input matInput>
-                                </mat-form-field>
+                            <div class="container">
+                                <div class="row">
+                                    <h2>Sonstiges</h2>
+                                </div>
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Aufnahmeinstrument</mat-label>
+                                            <input matInput formControlName="recordingInstrument">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-auto">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Aufnahmedatum</mat-label>
+                                            <input matInput formControlName="photographyDate">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Vergrößerung</mat-label>
+                                            <input matInput formControlName="magnification">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-auto">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Kamera</mat-label>
+                                            <input matInput formControlName="camera">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-auto">
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Objektiv</mat-label>
+                                            <input matInput formControlName="lens">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="p-2">
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Kamera</mat-label>
-                                    <input matInput>
-                                </mat-form-field>
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Objektiv</mat-label>
-                                    <input matInput>
-                                </mat-form-field>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-column justify-content-between">
-                            <div class="p-2">
+                            <div class="container">
+                                <div class="row">
+                                    <h2>Datei</h2>
+                                </div>
                                 <button mat-stroked-button (click)="fileUpload.click()">Datei auswählen</button>
                                 <input type="file" class="file-input" formControlName="image"
                                     (change)="onFileChange($event, i)" #fileUpload>
@@ -108,72 +145,204 @@
     <mat-step [stepControl]="findingFormGroup">
         <form [formGroup]="findingFormGroup">
             <ng-template matStepLabel>Erfassung der Daten zum Fund</ng-template>
-            <div class="row">
-                <div class="col-auto">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Datum</mat-label>
-                        <input matInput placeholder="dd.MM.yyyy" formControlName="micrometeoriteFindDate">
-                    </mat-form-field>
+            <div class="container" [formGroup]="micrometeoriteFindFinder">
+                <div class="row">
+                    <h2>Finder</h2>
                 </div>
-                <div class="col-auto">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Erfasser</mat-label>
-                        <input matInput placeholder="Last name, First name"
-                            formControlName="micrometeoriteFindRecorder">
-                    </mat-form-field>
+                <div class="row">
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Vorname</mat-label>
+                            <input matInput formControlName='firstname'>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Name</mat-label>
+                            <input matInput formControlName='name'>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Geburtstag</mat-label>
+                            <input matInput formControlName='birthday'>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Straße</mat-label>
+                            <input matInput formControlName='street'>
+                        </mat-form-field>
+                    </div>
                 </div>
-                <div class="col-auto">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Finder</mat-label>
-                        <input matInput placeholder="Name, Vorname" formControlName="micrometeoriteFindFinder">
-                    </mat-form-field>
-                </div>
-                <div class="col-auto">
-                    <mat-form-field appearance="fill">
-                        <mat-label>GPS-Daten</mat-label>
-                        <input matInput placeholder="Breite/Länge" formControlName="micrometeoriteFindCoordinates">
-                    </mat-form-field>
+                <div class="row">
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Ort</mat-label>
+                            <input matInput formControlName='location'>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Postleitzahl</mat-label>
+                            <input matInput formControlName='zipcode'>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Land</mat-label>
+                            <input matInput formControlName='country'>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName='email'>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Telefon</mat-label>
+                            <input matInput formControlName='phonenumber'>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Webseite</mat-label>
+                            <input matInput formControlName='website'>
+                        </mat-form-field>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-auto">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Ort</mat-label>
-                        <input matInput placeholder="Nürnberger Burggraben" formControlName="micrometeoriteFindPlace">
-                    </mat-form-field>
+            <div class="container" [formGroup]="micrometeoriteFindRecorder">
+                <div class="row">
+                    <h2>Erfasser</h2>
                 </div>
-                <div class="col-auto">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Beschreibung</mat-label>
-                        <input matInput placeholder="Beschreibung" formControlName="micrometeoriteFindPlaceDescription">
-                    </mat-form-field>
+                <div class="row">
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Vorname</mat-label>
+                            <input matInput formControlName='firstname'>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Name</mat-label>
+                            <input matInput formControlName='name'>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Geburtstag</mat-label>
+                            <input matInput formControlName='birthday'>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Straße</mat-label>
+                            <input matInput formControlName='street'>
+                        </mat-form-field>
+                    </div>
                 </div>
-                <div class="col-auto">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Form</mat-label>
-                        <input matInput placeholder="rund" formControlName="micrometeoriteForm">
-                    </mat-form-field>
-                </div>
-                <div class="col-auto">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Gewicht</mat-label>
-                        <input matInput placeholder="Gewicht" formControlName="micrometeoriteWeight">
-                    </mat-form-field>
+                <div class="row">
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Ort</mat-label>
+                            <input matInput formControlName='location'>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Postleitzahl</mat-label>
+                            <input matInput formControlName='zipcode'>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Land</mat-label>
+                            <input matInput formControlName='country'>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName='email'>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Telefon</mat-label>
+                            <input matInput formControlName='phonenumber'>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Webseite</mat-label>
+                            <input matInput formControlName='website'>
+                        </mat-form-field>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-auto">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Chemische Zusammensetzung</mat-label>
-                        <input matInput placeholder="Zusammensetzung"
-                            formControlName="micrometeoriteChemicalComposition">
-                    </mat-form-field>
+            <div class="container">
+                <div class="row">
+                    <h2>Sonstiges</h2>
                 </div>
-                <div class="col-auto">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Kommentar</mat-label>
-                        <input matInput placeholder="Kommentar" formControlName="micrometeoriteFindComment">
-                    </mat-form-field>
+                <div class="row">
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Datum</mat-label>
+                            <input matInput placeholder="dd.MM.yyyy" formControlName="micrometeoriteFindDate">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>GPS-Daten</mat-label>
+                            <input matInput placeholder="Breite/Länge" formControlName="micrometeoriteFindCoordinates">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Ort</mat-label>
+                            <input matInput placeholder="Nürnberger Burggraben"
+                                formControlName="micrometeoriteFindPlace">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Beschreibung</mat-label>
+                            <input matInput placeholder="Beschreibung"
+                                formControlName="micrometeoriteFindPlaceDescription">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Form</mat-label>
+                            <input matInput placeholder="rund" formControlName="micrometeoriteForm">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Gewicht</mat-label>
+                            <input matInput placeholder="Gewicht" formControlName="micrometeoriteWeight">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Chemische Zusammensetzung</mat-label>
+                            <input matInput placeholder="Zusammensetzung"
+                                formControlName="micrometeoriteChemicalComposition">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-auto">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Kommentar</mat-label>
+                            <input matInput placeholder="Kommentar" formControlName="micrometeoriteFindComment">
+                        </mat-form-field>
+                    </div>
                 </div>
             </div>
             <div>

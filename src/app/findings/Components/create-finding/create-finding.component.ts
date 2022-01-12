@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { APIClient } from 'src/app/api';
+import { MicrometeoriteFind, Person } from 'src/app/api/models';
 import { getBase64 } from 'src/app/home/shared/Helpers/helper';
 import { CreateFindingStepperService } from 'src/app/home/shared/Services/create-finding-stepper.service';
 
@@ -12,7 +14,7 @@ export class CreateFindingComponent implements OnInit {
   //@ts-ignore
   imageForm: FormGroup;
   //@ts-ignore
-  images: any[];
+  images: string[];
   //@ts-ignore
   findingFormGroup: FormGroup;
   selectedFiles: File[] = [];
@@ -21,25 +23,26 @@ export class CreateFindingComponent implements OnInit {
   imageCount: number | undefined;
 
   constructor(private _fb: FormBuilder,
-    private createFindingService: CreateFindingStepperService) { }
-/**
- * micrometeoriteFindFinder: this._fb.group({
-        birthday: [''],
-        country: [''],
-        email: [''],
-        firstname: [''],
-        location: [''],
-        name: [''],
-        phonenumber: [''],
-        street: [''],
-        website: [''],
-        zipcode: ['']
-      }),
- */
+    private createFindingService: CreateFindingStepperService,
+    private apiClient: APIClient) { }
+  /**
+   * micrometeoriteFindFinder: this._fb.group({
+          birthday: [''],
+          country: [''],
+          email: [''],
+          firstname: [''],
+          location: [''],
+          name: [''],
+          phonenumber: [''],
+          street: [''],
+          website: [''],
+          zipcode: ['']
+        }),
+   */
   ngOnInit(): void {
     this.images = [];
     this.imageForm = this._fb.group({
-      images: this._fb.array([this.getImageFormGroup()]),
+      images: this._fb.array([this.addImageFormGroup()]),
     });
     this.createFindingService.micrometeoriteFindAnnounced$.subscribe(finding => {
       this.data = finding;
@@ -51,41 +54,88 @@ export class CreateFindingComponent implements OnInit {
       micrometeoriteFindComment: [''],
       micrometeoriteFindCoordinates: [''],
       micrometeoriteFindDate: [''],
-      micrometeoriteFindFinder: [''],
+      micrometeoriteFindFinder: this.addPersonFormGroup(),
       micrometeoriteFindId: [''],
       micrometeoriteFindPlace: [''],
       micrometeoriteFindPlaceDescription: [''],
-      micrometeoriteFindRecorder: [''],
+      micrometeoriteFindRecorder: this.addPersonFormGroup(),
       micrometeoriteForm: [''],
       micrometeoriteWeight: ['']
     });
   }
 
-  save() { }
+  save() {
+    const result = { ...this.imageForm.value, ...this.findingFormGroup.value };
+    this.apiClient.addMicrometeoriteFind({body: this.mergeImagesAndForm(result)}).subscribe(
+      success => {
+        console.log('Erfolgreich angelegt: ', success);
+      }, error => {
+        console.log('Fund konnte nicht angelegt werden: ', error);
+      }
+    )
+  }
+
+  mergeImagesAndForm(obj: MicrometeoriteFind): MicrometeoriteFind {
+    obj.images?.map((element, index) => {
+      element.picture = this.images[index]
+    });
+    return obj;
+  }
 
   selectFile(event: any) {
     this.selectedFiles = event.target.files;
   }
 
-  getImageFormGroup() {
-    this.images.push(undefined);
+  addImageFormGroup() {
+    this.images.push('');
     return this._fb.group({
       image: [null, Validators.required],
-      photographer: [null],
-      recordingTool: [null],
+      photographer: this.addPersonFormGroup(),
+      recordingInstrument: [null],
       magnification: [null],
-      recordingDate: [null],
+      photographyDate: [null],
       camera: [null],
       lens: [null]
     });
+  }
+
+  addPersonFormGroup() {
+    return this._fb.group({
+      birthday: [''],
+      country: [''],
+      email: [''],
+      firstname: [''],
+      location: [''],
+      name: [''],
+      phonenumber: [''],
+      street: [''],
+      website: [''],
+      zipcode: ['']
+    });
+  }
+
+  getPhotographerFormGroup(i: number): FormGroup {
+    return this.imagesFormArray.at(i).get('photographer') as FormGroup
+  }
+
+  getImageFormGroup(i: number) {
+    return this.imagesFormArray.at(i) as FormGroup
   }
 
   get imagesFormArray() {
     return this.imageForm?.get('images') as FormArray;
   }
 
+  get micrometeoriteFindFinder(): FormGroup {
+    return this.findingFormGroup?.get('micrometeoriteFindFinder') as FormGroup;
+  }
+
+  get micrometeoriteFindRecorder(): FormGroup {
+    return this.findingFormGroup?.get('micrometeoriteFindRecorder') as FormGroup;
+  }
+
   addImageForm() {
-    this.imagesFormArray.push(this.getImageFormGroup());
+    this.imagesFormArray.push(this.addImageFormGroup());
   }
 
   removeImageForm(imageIndex: number): void {
@@ -99,12 +149,13 @@ export class CreateFindingComponent implements OnInit {
   onFileChange(event: any, index: number): void {
     const file = event.target.files[0];
     getBase64(file).then(data => {
+      // @ts-ignore
       this.images.splice(index, 1, data);
       if (!file) {
         this.imagesFormArray.controls[index].get('image')?.patchValue(null);
       }
     }).catch(e => {
-      console.log('Fehler bei der Umwandlung File -> Base64');
+      console.log('Fehler bei der Umwandlung File -> Base64: ', e);
     });
   }
 }

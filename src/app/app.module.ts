@@ -10,8 +10,10 @@ import { ToolbarComponent } from '../toolbar/toolbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { SharedModule } from './shared/shared.module';
 import { FindingsModule } from './findings/findings.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APIClientModule } from './api';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { HttpRequestInterceptor } from './shared/Interceptors/http-request.interceptor';
 
 @NgModule({
   declarations: [
@@ -30,9 +32,16 @@ import { APIClientModule } from './api';
     }),
     HomeModule,
     FindingsModule,
-    SharedModule
+    SharedModule,
+    MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpRequestInterceptor,
+      multi: true
+    } 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -22,9 +22,9 @@ export class FindingsListComponent implements OnInit {
     {title: 'Beschreibung', technicalName: 'micrometeoriteFindPlaceDescription'},
     {title: 'Ort', technicalName: 'micrometeoriteFindPlace'},
     {title: 'Koordinaten', technicalName: 'micrometeoriteFindCoordinates'},
-    {title: 'Diameter', technicalName: 'micrometeoriteDiameter'}
+    {title: 'Durchmesser', technicalName: 'micrometeoriteDiameter'}
   ];
-  columnsToDisplay = ['ID', 'Beschreibung', 'Ort', 'Koordinaten', 'Diameter'];
+  columnsToDisplay = ['ID', 'Beschreibung', 'Ort', 'Koordinaten', 'Durchmesser'];
   expandedElement: MicrometeoriteFind | null | undefined;
 
   constructor(private apiClient: APIClient) { }
@@ -35,5 +35,4 @@ export class FindingsListComponent implements OnInit {
       this.expandedElement = this.data[0];
     });
   }
-
 }

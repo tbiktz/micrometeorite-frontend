@@ -21,12 +21,14 @@
                                         <mat-form-field appearance="fill">
                                             <mat-label>Vorname</mat-label>
                                             <input matInput formControlName='firstname'>
+                                            <mat-error *ngIf="getPhotographerFormGroup(i)?.get('firstname')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                                         </mat-form-field>
                                     </div>
                                     <div class="col-auto">
                                         <mat-form-field appearance="fill">
                                             <mat-label>Name</mat-label>
                                             <input matInput formControlName='name'>
+                                            <mat-error *ngIf="getPhotographerFormGroup(i)?.get('name')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                                         </mat-form-field>
                                     </div>
                                     <div class="col-auto">
@@ -39,6 +41,7 @@
                                         <mat-form-field appearance="fill">
                                             <mat-label>Straße</mat-label>
                                             <input matInput formControlName='street'>
+                                            <mat-error *ngIf="getPhotographerFormGroup(i)?.get('street')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -47,36 +50,42 @@
                                         <mat-form-field appearance="fill">
                                             <mat-label>Ort</mat-label>
                                             <input matInput formControlName='location'>
+                                            <mat-error *ngIf="getPhotographerFormGroup(i)?.get('location')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                                         </mat-form-field>
                                     </div>
                                     <div class="col-auto">
                                         <mat-form-field appearance="fill">
                                             <mat-label>Postleitzahl</mat-label>
                                             <input matInput formControlName='zipcode'>
+                                            <mat-error *ngIf="getPhotographerFormGroup(i)?.get('location')?.hasError('pattern')">Eingabe nicht numerisch</mat-error>
                                         </mat-form-field>
                                     </div>
                                     <div class="col-auto">
                                         <mat-form-field appearance="fill">
                                             <mat-label>Land</mat-label>
                                             <input matInput formControlName='country'>
+                                            <mat-error *ngIf="getPhotographerFormGroup(i)?.get('country')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                                         </mat-form-field>
                                     </div>
                                     <div class="col-auto">
                                         <mat-form-field appearance="fill">
                                             <mat-label>Email</mat-label>
                                             <input matInput formControlName='email'>
+                                            <mat-error *ngIf="getPhotographerFormGroup(i)?.get('email')?.hasError('email')">Keine gültige Email</mat-error>
                                         </mat-form-field>
                                     </div>
                                     <div class="col-auto">
                                         <mat-form-field appearance="fill">
                                             <mat-label>Telefon</mat-label>
                                             <input matInput formControlName='phonenumber'>
+                                            <mat-error *ngIf="getPhotographerFormGroup(i)?.get('phonenumber')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                                         </mat-form-field>
                                     </div>
                                     <div class="col-auto">
                                         <mat-form-field appearance="fill">
                                             <mat-label>Webseite</mat-label>
                                             <input matInput formControlName='website'>
+                                            <mat-error *ngIf="getPhotographerFormGroup(i)?.get('website')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -154,12 +163,14 @@
                         <mat-form-field appearance="fill">
                             <mat-label>Vorname</mat-label>
                             <input matInput formControlName='firstname'>
+                            <mat-error *ngIf="micrometeoriteFindFinder.get('firstname')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-auto">
                         <mat-form-field appearance="fill">
                             <mat-label>Name</mat-label>
                             <input matInput formControlName='name'>
+                            <mat-error *ngIf="micrometeoriteFindFinder.get('name')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-auto">
@@ -172,6 +183,7 @@
                         <mat-form-field appearance="fill">
                             <mat-label>Straße</mat-label>
                             <input matInput formControlName='street'>
+                            <mat-error *ngIf="micrometeoriteFindFinder.get('street')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                         </mat-form-field>
                     </div>
                 </div>
@@ -180,36 +192,42 @@
                         <mat-form-field appearance="fill">
                             <mat-label>Ort</mat-label>
                             <input matInput formControlName='location'>
+                            <mat-error *ngIf="micrometeoriteFindFinder.get('location')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-auto">
                         <mat-form-field appearance="fill">
                             <mat-label>Postleitzahl</mat-label>
                             <input matInput formControlName='zipcode'>
+                            <mat-error *ngIf="micrometeoriteFindFinder.get('zipcode')?.hasError('pattern')">Eingabe nicht numerisch</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-auto">
                         <mat-form-field appearance="fill">
                             <mat-label>Land</mat-label>
                             <input matInput formControlName='country'>
+                            <mat-error *ngIf="micrometeoriteFindFinder.get('country')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-auto">
                         <mat-form-field appearance="fill">
                             <mat-label>Email</mat-label>
                             <input matInput formControlName='email'>
+                            <mat-error *ngIf="micrometeoriteFindFinder.get('email')?.hasError('email')">Ungültige Email</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-auto">
                         <mat-form-field appearance="fill">
                             <mat-label>Telefon</mat-label>
                             <input matInput formControlName='phonenumber'>
+                            <mat-error *ngIf="micrometeoriteFindFinder.get('phonenumber')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-auto">
                         <mat-form-field appearance="fill">
                             <mat-label>Webseite</mat-label>
                             <input matInput formControlName='website'>
+                            <mat-error *ngIf="micrometeoriteFindFinder.get('website')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                         </mat-form-field>
                     </div>
                 </div>
@@ -223,12 +241,14 @@
                         <mat-form-field appearance="fill">
                             <mat-label>Vorname</mat-label>
                             <input matInput formControlName='firstname'>
+                            <mat-error *ngIf="micrometeoriteFindRecorder.get('firstname')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-auto">
                         <mat-form-field appearance="fill">
                             <mat-label>Name</mat-label>
                             <input matInput formControlName='name'>
+                            <mat-error *ngIf="micrometeoriteFindRecorder.get('name')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-auto">
@@ -241,6 +261,7 @@
                         <mat-form-field appearance="fill">
                             <mat-label>Straße</mat-label>
                             <input matInput formControlName='street'>
+                            <mat-error *ngIf="micrometeoriteFindRecorder.get('street')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                         </mat-form-field>
                     </div>
                 </div>
@@ -249,30 +270,35 @@
                         <mat-form-field appearance="fill">
                             <mat-label>Ort</mat-label>
                             <input matInput formControlName='location'>
+                            <mat-error *ngIf="micrometeoriteFindRecorder.get('location')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-auto">
                         <mat-form-field appearance="fill">
                             <mat-label>Postleitzahl</mat-label>
                             <input matInput formControlName='zipcode'>
+                            <mat-error *ngIf="micrometeoriteFindRecorder.get('zipcode')?.hasError('pattern')">Eingabe nicht numerisch</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-auto">
                         <mat-form-field appearance="fill">
                             <mat-label>Land</mat-label>
                             <input matInput formControlName='country'>
+                            <mat-error *ngIf="micrometeoriteFindRecorder.get('country')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-auto">
                         <mat-form-field appearance="fill">
                             <mat-label>Email</mat-label>
                             <input matInput formControlName='email'>
+                            <mat-error *ngIf="micrometeoriteFindRecorder.get('email')?.hasError('email')">Ungültige Email</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-auto">
                         <mat-form-field appearance="fill">
                             <mat-label>Telefon</mat-label>
                             <input matInput formControlName='phonenumber'>
+                            <mat-error *ngIf="micrometeoriteFindRecorder.get('phonenumber')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-auto">
@@ -307,6 +333,7 @@
                             <mat-label>Ort</mat-label>
                             <input matInput placeholder="Nürnberger Burggraben"
                                 formControlName="micrometeoriteFindPlace">
+                                <mat-error *ngIf="findingFormGroup.get('micrometeoriteFindPlace')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-auto">
@@ -314,18 +341,21 @@
                             <mat-label>Beschreibung</mat-label>
                             <input matInput placeholder="Beschreibung"
                                 formControlName="micrometeoriteFindPlaceDescription">
+                                <mat-error *ngIf="findingFormGroup.get('micrometeoriteFindPlaceDescription')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-auto">
                         <mat-form-field appearance="fill">
                             <mat-label>Form</mat-label>
                             <input matInput placeholder="rund" formControlName="micrometeoriteForm">
+                            <mat-error *ngIf="findingFormGroup.get('micrometeoriteForm')?.hasError('pattern')">Eingabe nicht alphanumerisch</mat-error>
                         </mat-form-field>
                     </div>
                     <div class="col-auto">
                         <mat-form-field appearance="fill">
                             <mat-label>Gewicht</mat-label>
                             <input matInput placeholder="Gewicht" formControlName="micrometeoriteWeight">
+                            <mat-error *ngIf="findingFormGroup.get('micrometeoriteWeight')?.hasError('pattern')">Eingabe nicht numerisch</mat-error>
                         </mat-form-field>
                     </div>
                 </div>
@@ -341,6 +371,7 @@
                         <mat-form-field appearance="fill">
                             <mat-label>Kommentar</mat-label>
                             <input matInput placeholder="Kommentar" formControlName="micrometeoriteFindComment">
+                            <mat-error *ngIf="findingFormGroup.get('micrometeoriteFindComment')?.hasError('pattern')">Eingabe nicht numerisch</mat-error>
                         </mat-form-field>
                     </div>
                 </div>

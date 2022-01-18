@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { APIClient } from 'src/app/api';
 import { MicrometeoriteFind, Person } from 'src/app/api/models';
 import { getBase64 } from 'src/app/home/shared/Helpers/helper';
@@ -21,6 +21,8 @@ export class CreateFindingComponent implements OnInit {
   //@ts-ignore
   data: MicrometeoriteFind;
   imageCount: number | undefined;
+  numericRegex: RegExp = /^([0-9]*[\,|\.][0-9]*)$/;
+  alphanumericRegex: RegExp = /^[a-zA-Z0-9,\.äöüß\/]*$/;
 
   constructor(private _fb: FormBuilder,
     private createFindingService: CreateFindingStepperService,
@@ -50,23 +52,23 @@ export class CreateFindingComponent implements OnInit {
     });
     this.findingFormGroup = this._fb.group({
       micrometeoriteChemicalComposition: [''],
-      micrometeoriteDiameter: [''],
-      micrometeoriteFindComment: [''],
+      micrometeoriteDiameter: ['', [Validators.pattern(this.numericRegex)]],
+      micrometeoriteFindComment: ['', [Validators.pattern(this.alphanumericRegex)]],
       micrometeoriteFindCoordinates: [''],
       micrometeoriteFindDate: [''],
       micrometeoriteFindFinder: this.addPersonFormGroup(),
       micrometeoriteFindId: [''],
-      micrometeoriteFindPlace: [''],
-      micrometeoriteFindPlaceDescription: [''],
+      micrometeoriteFindPlace: ['', [Validators.pattern(this.alphanumericRegex)]],
+      micrometeoriteFindPlaceDescription: ['', [Validators.pattern(this.alphanumericRegex)]],
       micrometeoriteFindRecorder: this.addPersonFormGroup(),
-      micrometeoriteForm: [''],
-      micrometeoriteWeight: ['']
+      micrometeoriteForm: ['', [Validators.pattern(this.alphanumericRegex)]],
+      micrometeoriteWeight: ['', [Validators.pattern(this.numericRegex)]]
     });
   }
 
   save() {
     const result = { ...this.imageForm.value, ...this.findingFormGroup.value };
-    this.apiClient.addMicrometeoriteFind({body: this.mergeImagesAndForm(result)}).subscribe(
+    this.apiClient.addMicrometeoriteFind({ body: this.mergeImagesAndForm(result) }).subscribe(
       success => {
         console.log('Erfolgreich angelegt: ', success);
       }, error => {
@@ -89,28 +91,28 @@ export class CreateFindingComponent implements OnInit {
   addImageFormGroup() {
     this.images.push('');
     return this._fb.group({
-      image: [null, Validators.required],
+      image: [null, [Validators.required]],
       photographer: this.addPersonFormGroup(),
-      recordingInstrument: [null],
+      recordingInstrument: [null, [Validators.pattern(this.alphanumericRegex)]],
       magnification: [null],
       photographyDate: [null],
-      camera: [null],
-      lens: [null]
+      camera: [null, [Validators.pattern(this.alphanumericRegex)]],
+      lens: [null, [Validators.pattern(this.alphanumericRegex)]]
     });
   }
 
   addPersonFormGroup() {
     return this._fb.group({
       birthday: [''],
-      country: [''],
-      email: [''],
-      firstname: [''],
-      location: [''],
-      name: [''],
-      phonenumber: [''],
-      street: [''],
-      website: [''],
-      zipcode: ['']
+      country: ['', [Validators.pattern(this.alphanumericRegex)]],
+      email: ['', [Validators.email]],
+      firstname: ['', [Validators.pattern(this.alphanumericRegex)]],
+      location: ['', [Validators.pattern(this.alphanumericRegex)]],
+      name: ['', [Validators.pattern(this.alphanumericRegex)]],
+      phonenumber: ['', [Validators.pattern(this.alphanumericRegex)]],
+      street: ['', [Validators.pattern(this.alphanumericRegex)]],
+      website: ['', [Validators.pattern(this.alphanumericRegex)]],
+      zipcode: ['', [Validators.pattern(this.numericRegex)]]
     });
   }
 

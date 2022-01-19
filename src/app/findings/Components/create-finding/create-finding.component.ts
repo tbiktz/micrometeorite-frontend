@@ -68,13 +68,11 @@ export class CreateFindingComponent implements OnInit {
 
   save() {
     const result = { ...this.imageForm.value, ...this.findingFormGroup.value };
-    this.apiClient.addMicrometeoriteFind({ body: this.mergeImagesAndForm(result) }).subscribe(
-      success => {
-        console.log('Erfolgreich angelegt: ', success);
-      }, error => {
-        console.log('Fund konnte nicht angelegt werden: ', error);
-      }
-    )
+    this.apiClient.addMicrometeoriteFind({ body: this.mergeImagesAndForm(result) }).subscribe({
+      next: (v) => console.log(v),
+      error: (e) => console.error(e),
+      complete: () => console.info('completed')
+    })
   }
 
   mergeImagesAndForm(obj: MicrometeoriteFind): MicrometeoriteFind {

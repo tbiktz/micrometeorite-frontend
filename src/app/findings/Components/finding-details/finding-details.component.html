@@ -1,0 +1,362 @@
+<h1 mat-dialog-title>Details zu Fund {{data.finding.micrometeoriteFindId}}</h1>
+<div mat-dialog-content>
+    <div class="container mt-2 mb-2">
+        <mat-expansion-panel (opened)="imagesPanelOpenState = true" (closed)="imagesPanelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Bilder
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="container mt-2" *ngFor="let image of data.finding.images">
+                <img src='data:image/jpeg;base64,{{image.picture}}' width="150em" alt="Image Source">
+                <div class="row">
+                    <div class="col">
+                        <label>
+                            ID
+                        </label>
+                        <p>{{image.imageId}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Datum
+                        </label>
+                        <p>{{image.photographyDate | date: 'dd.MM.yyyy'}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Aufnahmeinstrument
+                        </label>
+                        <p>{{image.recordingInstrument}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>
+                            Kamera
+                        </label>
+                        <p>{{image.camera}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Linse
+                        </label>
+                        <p>{{image.lens}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Vergrößerung
+                        </label>
+                        <p>{{image.magnification}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <h2>Fotograf</h2>
+                    <div class="container mt-2">
+                        <div class="row">
+                            <div class="col">
+                                <label>
+                                    Name
+                                </label>
+                                <p>{{image.photographer?.name}}</p>
+                            </div>
+                            <div class="col">
+                                <label>
+                                    Vorname
+                                </label>
+                                <p>{{image.photographer?.firstname}}</p>
+                            </div>
+                            <div class="col">
+                                <label>
+                                    Geburtstag
+                                </label>
+                                <p>{{image.photographer?.birthday | date: 'dd.MM.yyyy'}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>
+                                    Straße
+                                </label>
+                                <p>{{image.photographer?.street}}</p>
+                            </div>
+                            <div class="col">
+                                <label>
+                                    PLZ
+                                </label>
+                                <p>{{image.photographer?.zipcode}}</p>
+                            </div>
+                            <div class="col">
+                                <label>
+                                    Ort
+                                </label>
+                                <p>{{image.photographer?.location}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label>
+                                    Land
+                                </label>
+                                <p>{{image.photographer?.country}}</p>
+                            </div>
+                            <div class="col">
+                                <label>
+                                    Telefonnummer
+                                </label>
+                                <p>{{image.photographer?.phonenumber}}</p>
+                            </div>
+                            <div class="col">
+                                <label>
+                                    Email
+                                </label>
+                                <p>{{image.photographer?.email}}</p>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label>
+                                        Website
+                                    </label>
+                                    <p>{{image.photographer?.website}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="basicPanelOpenState = true" (closed)="basicPanelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Grunddaten
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="container mt-2">
+                <div class="row">
+                    <div class="col">
+                        <label>
+                            ID
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindId}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Datum des Fundes
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindDate | date: 'dd.MM.yyyy'}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Chem. Zusammensetzung
+                        </label>
+                        <p>{{data.finding.micrometeoriteChemicalComposition}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>
+                            Ort des Fundes
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindPlace}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Ortsbeschreibung des Fundes
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindPlaceDescription}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Koordinaten des Fundes
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindCoordinates}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>
+                            Form
+                        </label>
+                        <p>{{data.finding.micrometeoriteForm}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Gewicht
+                        </label>
+                        <p>{{data.finding.micrometeoriteWeight}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Durchmesser
+                        </label>
+                        <p>{{data.finding.micrometeoriteDiameter}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>
+                            Kommentar
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindComment}}</p>
+                    </div>
+                </div>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="finderPanelOpenState = true" (closed)="finderPanelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Finder
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="container mt-2">
+                <div class="row">
+                    <div class="col">
+                        <label>
+                            Name
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindFinder?.name}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Vorname
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindFinder?.firstname}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Geburtstag
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindFinder?.birthday | date: 'dd.MM.yyyy'}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>
+                            Straße
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindFinder?.street}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            PLZ
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindFinder?.zipcode}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Ort
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindFinder?.location}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>
+                            Land
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindFinder?.country}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Telefonnummer
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindFinder?.phonenumber}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Email
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindFinder?.email}}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label>
+                                Website
+                            </label>
+                            <p>{{data.finding.micrometeoriteFindFinder?.website}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="recorderPanelOpenState = true" (closed)="recorderPanelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Erfasser
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="container mt-2">
+                <div class="row">
+                    <div class="col">
+                        <label>
+                            Name
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindRecorder?.name}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Vorname
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindRecorder?.firstname}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Geburtstag
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindRecorder?.birthday | date: 'dd.MM.yyyy'}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>
+                            Straße
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindRecorder?.street}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            PLZ
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindRecorder?.zipcode}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Ort
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindRecorder?.location}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>
+                            Land
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindRecorder?.country}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Telefonnummer
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindRecorder?.phonenumber}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Email
+                        </label>
+                        <p>{{data.finding.micrometeoriteFindRecorder?.email}}</p>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label>
+                                Website
+                            </label>
+                            <p>{{data.finding.micrometeoriteFindRecorder?.website}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close (click)="closeDialog()">schließen</button>
+</div>

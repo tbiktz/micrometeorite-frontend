@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FindingsListComponent } from './Components/findings-list/findings-list.component';
-import { FindingsListElementComponent } from './Components/findings-list-element/findings-list-element.component';
 import { SharedModule } from '../shared/shared.module';
 import { FindingsComponent } from './Components/findings/findings.component';
 import { MatListModule } from '@angular/material/list';
@@ -15,15 +14,18 @@ import { MatTableModule } from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { CreateFindingComponent } from './Components/create-finding/create-finding.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { FindingDetailsComponent } from './Components/finding-details/finding-details.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
 @NgModule({
   declarations: [
     FindingsListComponent,
-    FindingsListElementComponent,
     FindingsComponent,
-    CreateFindingComponent
+    CreateFindingComponent,
+    FindingDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +39,9 @@ import { CreateFindingComponent } from './Components/create-finding/create-findi
     MatIconModule,
     MatInputModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    MatExpansionModule
   ]
 })
 export class FindingsModule { }

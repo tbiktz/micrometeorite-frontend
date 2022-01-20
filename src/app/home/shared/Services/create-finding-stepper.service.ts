@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { MicrometeoriteFind } from 'src/app/api/models';
+import { MicrometeoriteFind } from 'src/app/api/models/micrometeorite-find.model';
 
 @Injectable({
   providedIn: 'root'

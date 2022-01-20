@@ -76,6 +76,24 @@ export class APIClient implements APIClientInterface {
     return this.sendRequest<models.MicrometeoriteFind[]>('GET', path, options);
   }
 
+  /**
+   * Response generated for [ missing ] HTTP response code.
+   */
+  deleteMicrometeoriteFind(
+    args: {
+      micrometeoriteFindId: number,  // micrometeoriteFindId id to delete
+    },
+    requestHttpOptions?: HttpOptions
+  ): Observable<void> {
+    const path = `/micrometeoriteFind/${args.micrometeoriteFindId}`;
+    const options: APIHttpOptions = {
+      ...this.options,
+      ...requestHttpOptions,
+    };
+
+    return this.sendRequest<void>('DELETE', path, options);
+  }
+
   private sendRequest<T>(method: string, path: string, options: HttpOptions, body?: any): Observable<T> {
     switch (method) {
       case 'DELETE':

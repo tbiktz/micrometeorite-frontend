@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { APIClient } from 'src/app/api';
-import { MicrometeoriteFind } from 'src/app/api/models';
+import { MicrometeoriteFind } from 'src/app/api/models/micrometeorite-find.model';
 
 @Component({
   selector: 'micro-findings',

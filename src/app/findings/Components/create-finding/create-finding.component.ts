@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { APIClient } from 'src/app/api';
-import { MicrometeoriteFind, Person } from 'src/app/api/models';
+import { MicrometeoriteFind } from 'src/app/api/models/micrometeorite-find.model';
 import { getBase64 } from 'src/app/home/shared/Helpers/helper';
 import { CreateFindingStepperService } from 'src/app/home/shared/Services/create-finding-stepper.service';
 

@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MicrometeoriteFind } from 'src/app/api/models';
+import { MicrometeoriteFind } from 'src/app/api/models/micrometeorite-find.model';
 
 @Component({
   selector: 'micro-finding-details',

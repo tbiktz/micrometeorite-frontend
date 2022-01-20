@@ -17,6 +17,7 @@ import { CreateFindingComponent } from './Components/create-finding/create-findi
 import {MatDialogModule} from '@angular/material/dialog';
 import { FindingDetailsComponent } from './Components/finding-details/finding-details.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -41,7 +42,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatCardModule,
     MatButtonModule,
     MatDialogModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatCheckboxModule
   ]
 })
 export class FindingsModule { }

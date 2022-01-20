@@ -24,4 +24,14 @@ export interface APIClientInterface {
     requestHttpOptions?: HttpOptions
   ): Observable<models.MicrometeoriteFind[]>;
 
+  /**
+   * Response generated for [ missing ] HTTP response code.
+   */
+  deleteMicrometeoriteFind(
+    args: {
+      micrometeoriteFindId: number,  // micrometeoriteFindId id to delete
+    },
+    requestHttpOptions?: HttpOptions
+  ): Observable<void>;
+
 }

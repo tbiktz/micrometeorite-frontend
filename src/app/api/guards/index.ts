@@ -26,6 +26,10 @@ export function isImage(arg: any): arg is models.Image {
     ( typeof arg.lens === 'undefined' || typeof arg.lens === 'string' ) &&
     // magnification?: string
     ( typeof arg.magnification === 'undefined' || typeof arg.magnification === 'string' ) &&
+    // micrometeoritePrediction?: number
+    ( typeof arg.micrometeoritePrediction === 'undefined' || typeof arg.micrometeoritePrediction === 'number' ) &&
+    // micrometeoritePredictionModelName?: string
+    ( typeof arg.micrometeoritePredictionModelName === 'undefined' || typeof arg.micrometeoritePredictionModelName === 'string' ) &&
     // photographer?: Person
     ( typeof arg.photographer === 'undefined' || isPerson(arg.photographer) ) &&
     // photographyDate?: string
@@ -34,6 +38,21 @@ export function isImage(arg: any): arg is models.Image {
     ( typeof arg.picture === 'undefined' || typeof arg.picture === 'string' ) &&
     // recordingInstrument?: string
     ( typeof arg.recordingInstrument === 'undefined' || typeof arg.recordingInstrument === 'string' ) &&
+
+  true
+  );
+  }
+
+export function isImageResult(arg: any): arg is models.ImageResult {
+  return (
+  arg != null &&
+  typeof arg === 'object' &&
+    // imageId?: number
+    ( typeof arg.imageId === 'undefined' || typeof arg.imageId === 'number' ) &&
+    // micrometeoritePrediction?: number
+    ( typeof arg.micrometeoritePrediction === 'undefined' || typeof arg.micrometeoritePrediction === 'number' ) &&
+    // micrometeoritePredictionModelName?: string
+    ( typeof arg.micrometeoritePredictionModelName === 'undefined' || typeof arg.micrometeoritePredictionModelName === 'string' ) &&
 
   true
   );
@@ -107,12 +126,10 @@ export function isPredictionResult(arg: any): arg is models.PredictionResult {
   return (
   arg != null &&
   typeof arg === 'object' &&
+    // imagesResults?: ImageResult[]
+    ( typeof arg.imagesResults === 'undefined' || (Array.isArray(arg.imagesResults) && arg.imagesResults.every((item: unknown) => isImageResult(item))) ) &&
     // micrometeoriteFindId?: number
     ( typeof arg.micrometeoriteFindId === 'undefined' || typeof arg.micrometeoriteFindId === 'number' ) &&
-    // micrometeoritePrediction?: number
-    ( typeof arg.micrometeoritePrediction === 'undefined' || typeof arg.micrometeoritePrediction === 'number' ) &&
-    // micrometeoritePredictionModelName?: string
-    ( typeof arg.micrometeoritePredictionModelName === 'undefined' || typeof arg.micrometeoritePredictionModelName === 'string' ) &&
 
   true
   );

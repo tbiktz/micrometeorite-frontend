@@ -51,4 +51,4 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openDetails(row)"></tr>
 </table>
-<button mat-button (click)="deleteSelectedMicrometeoriteFind()">löschen</button>
+<button class="mt-3" mat-stroked-button (click)="deleteSelectedMicrometeoriteFind()">löschen</button>

@@ -18,8 +18,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { FindingDetailsComponent } from './Components/finding-details/finding-details.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatButtonModule,
     MatDialogModule,
     MatExpansionModule,
-    MatCheckboxModule
-  ]
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'de-DE' }]
 })
 export class FindingsModule { }

@@ -1,10 +1,8 @@
 <div *ngIf="loading" class="loading-container flex-content-center">
-    <mat-progress-spinner
-      color="primary"
-      mode="indeterminate">
-    </mat-progress-spinner>
-  </div>
+  <mat-progress-spinner color="primary" mode="indeterminate">
+  </mat-progress-spinner>
+</div>
 <div class="microContainer">
-    <micro-toolbar></micro-toolbar>
-    <router-outlet></router-outlet>
+  <micro-toolbar></micro-toolbar>
+  <router-outlet></router-outlet>
 </div>

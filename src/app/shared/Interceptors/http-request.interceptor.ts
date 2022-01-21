@@ -7,7 +7,7 @@ import {
   HttpInterceptor, HttpResponse
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {catchError, map} from 'rxjs/operators'
+import {catchError, finalize, map} from 'rxjs/operators'
 import { LoadingService } from '../Services/loading.service';
 
 /**
@@ -23,18 +23,8 @@ export class HttpRequestInterceptor implements HttpInterceptor {
     private _loading: LoadingService
   ) { }
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    this._loading.setLoading(true, request.url);
-    return next.handle(request)
-    //@ts-ignore
-      .pipe(catchError(err => {
-        this._loading.setLoading(false, request.url);
-        console.log(err);
-      }))
-      .pipe(map<HttpEvent<any>, any>((evt: HttpEvent<any>) => {
-        if (evt instanceof HttpResponse) {
-          this._loading.setLoading(false, request.url);
-        }
-      }));
-  }
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+      this._loading.setLoading(true, req.url);
+      return next.handle(req).pipe(finalize(() => this._loading.setLoading(false, req.url)));
+    }
 }

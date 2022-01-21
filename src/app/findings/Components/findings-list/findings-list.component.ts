@@ -31,8 +31,10 @@ export class FindingsListComponent implements OnInit {
     public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this._apiClient.getAllMicrometeoriteFinds().subscribe(findings => {
-      this.dataSource.data = findings;
+    this._apiClient.getAllMicrometeoriteFinds().subscribe({
+      next: (findings) => this.dataSource.data = findings ,
+      error: (e) => console.error(e),
+      complete: () => console.info('complete')
     });
   }
 

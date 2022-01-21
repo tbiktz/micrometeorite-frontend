@@ -35,7 +35,12 @@ import { HttpRequestInterceptor } from './shared/Interceptors/http-request.inter
     SharedModule,
     MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpRequestInterceptor,
+      multi: true,
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,9 @@
 {
   "name": "micrometeorite-frontend",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "engines": {
+    "node": "16.13.1"
+  },
   "scripts": {
     "ng": "ng",
     "heroku-postbuild": "ng build --prod && npm install -g http-server-spa",

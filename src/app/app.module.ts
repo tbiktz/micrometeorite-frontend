@@ -13,12 +13,15 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APIClientModule } from './api';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { HttpRequestInterceptor } from './shared/Interceptors/http-request.interceptor';
+import { FooterComponent } from './footer/footer.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { HttpRequestInterceptor } from './shared/Interceptors/http-request.inter
     HomeModule,
     FindingsModule,
     SharedModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule
   ],
   providers: [
     {

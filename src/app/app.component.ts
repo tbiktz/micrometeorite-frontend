@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { delay } from 'rxjs/operators';
+import { LoginService } from './login/Services/login.service';
 import { LoadingService } from './shared/Services/loading.service';
 
 @Component({
@@ -10,11 +11,14 @@ import { LoadingService } from './shared/Services/loading.service';
 export class AppComponent  implements OnInit{
   title = 'micrometeorite-frontend';
   loading: boolean = false;
+  loggedIn: boolean = false;
 
-  constructor(private loadingService: LoadingService){}
+  constructor(private loadingService: LoadingService,
+    private loginService: LoginService){}
 
   ngOnInit() {
     this.listenToLoading();
+    this.loginService.loginObservable.subscribe(state => this.loggedIn = state);
   }
 
   listenToLoading(): void {

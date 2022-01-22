@@ -6,6 +6,9 @@
           <a class="nav-link text-black" routerLinkActive="microActiveLink" aria-current="page" routerLink="/home">Home</a>
           <a class="nav-link text-black" routerLinkActive="microActiveLink" routerLink="/funde">Funde</a>
           <a class="nav-link text-black" routerLinkActive="microActiveLink" routerLink="/administration">Administration</a>
+          <button mat-icon-button (click)="logout()" color="black" aria-label="logout">
+            <mat-icon>logout</mat-icon>
+          </button>
         </nav>
       </div>
     </header>

@@ -15,6 +15,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { HttpRequestInterceptor } from './shared/Interceptors/http-request.interceptor';
 import { FooterComponent } from './footer/footer.component';
 import {MatIconModule} from '@angular/material/icon';
+import { LoginModule } from './login/login.module';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import {MatIconModule} from '@angular/material/icon';
     FindingsModule,
     SharedModule,
     MatProgressSpinnerModule,
-    MatIconModule
+    MatIconModule,
+    LoginModule,
+    MatButtonModule
   ],
   providers: [
     {

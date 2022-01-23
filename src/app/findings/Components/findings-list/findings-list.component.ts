@@ -74,12 +74,12 @@ export class FindingsListComponent implements OnInit {
   deleteSelectedMicrometeoriteFind() {
     const fork = {};
     //@ts-ignore
-    this.selection.selected.forEach(el => fork[el.micrometeoriteFindId] = this._apiClient.deleteMicrometeoriteFind(el.micrometeoriteFindId));
+    this.selection.selected.forEach(el => fork[el.micrometeoriteFindId] = this._apiClient.deleteMicrometeoriteFind({micrometeoriteFindId: el.micrometeoriteFindId}));
     const observable = forkJoin(fork);
     observable.subscribe({
       next: (v) => console.log('NEXT: ', v),
       error: (e) => console.error('ERROR: ', e),
-      complete: () => console.info('complete')
+      complete: () => this.ngOnInit()
     });
   }
 }

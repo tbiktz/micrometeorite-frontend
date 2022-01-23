@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { APIClient } from 'src/app/api';
+import { PredictionResult } from 'src/app/api/models';
 import { MicrometeoriteFind } from 'src/app/api/models/micrometeorite-find.model';
 import { getBase64 } from 'src/app/home/shared/Helpers/helper';
 import { CreateFindingStepperService } from 'src/app/home/shared/Services/create-finding-stepper.service';
@@ -23,6 +24,8 @@ export class CreateFindingComponent implements OnInit {
   imageCount: number | undefined;
   numericRegex: RegExp = /^([0-9]*[\,|\.][0-9]*)|([0-9]*)$/;
   alphanumericRegex: RegExp = /^[a-zA-Z0-9,\.äöüß\/ ]*$/;
+  //@ts-ignore
+  results: PredictionResult[];
 
   constructor(private _fb: FormBuilder,
     private createFindingService: CreateFindingStepperService,
@@ -54,7 +57,7 @@ export class CreateFindingComponent implements OnInit {
       micrometeoriteChemicalComposition: [''],
       micrometeoriteDiameter: ['', [Validators.pattern(this.numericRegex)]],
       micrometeoriteFindComment: ['', [Validators.pattern(this.alphanumericRegex)]],
-      micrometeoriteFindCoordinates: [''],
+      micrometeoriteFindCoordinates: ['', [Validators.pattern(this.numericRegex)]],
       micrometeoriteFindDate: [''],
       micrometeoriteFindFinder: this.addPersonFormGroup(),
       micrometeoriteFindId: [''],
@@ -68,11 +71,13 @@ export class CreateFindingComponent implements OnInit {
 
   save() {
     const result = { ...this.imageForm.value, ...this.findingFormGroup.value };
-    this.apiClient.addMicrometeoriteFind({ body: this.mergeImagesAndForm(result) }).subscribe({
-      next: (v) => console.log(v),
+    console.log(this.mergeImagesAndForm(result));
+    this.apiClient.addMicrometeoriteFind({ body: this.mergeImagesAndForm(result) })
+    .subscribe({
+      next: (results) => this.results =  results,
       error: (e) => console.error(e),
-      complete: () => console.info('completed')
-    })
+      complete: () => console.info('complete')
+    });
   }
 
   mergeImagesAndForm(obj: MicrometeoriteFind): MicrometeoriteFind {

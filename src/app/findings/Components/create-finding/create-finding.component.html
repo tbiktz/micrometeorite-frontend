@@ -434,11 +434,35 @@
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Ergebnis</ng-template>
-        <p>Das System meldet folgendes Ergebnis.</p>
+        <h2 *ngIf="results">Das System meldet folgende Ergebnisse:</h2>
+        <div *ngFor="let result of results">
+            <div *ngFor="let image of result?.imagesResults">
+                <div class="row">
+                    <div class="col">
+                        <label>
+                            ID
+                        </label>
+                        <p>{{image?.imageId}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Vorhersage
+                        </label>
+                        <p>{{(image.micrometeoritePrediction ? (image.micrometeoritePrediction / 100) : 0) | percent}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
+                            Methode
+                        </label>
+                        <p>{{image?.micrometeoritePredictionModelName}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div>
-            <button mat-button matStepperPrevious>zurück</button>
-            <button mat-button (click)="stepper.reset()">zurücksetzen</button>
-            <button mat-button (click)="save()">speichern</button>
+            <button mat-button matStepperPrevious [disabled]="results">zurück</button>
+            <button mat-button (click)="stepper.reset()" [disabled]="results">zurücksetzen</button>
+            <button mat-button (click)="save()" [disabled]="results">speichern</button>
         </div>
     </mat-step>
 </mat-stepper>

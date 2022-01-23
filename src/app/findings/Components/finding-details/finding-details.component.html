@@ -18,6 +18,12 @@
                     </div>
                     <div class="col">
                         <label>
+                            Vorhersage
+                        </label>
+                        <p>{{(image.micrometeoritePrediction ? (image.micrometeoritePrediction / 100) : 0) | percent}}</p>
+                    </div>
+                    <div class="col">
+                        <label>
                             Datum
                         </label>
                         <p>{{image.photographyDate | date: 'dd.MM.yyyy'}}</p>

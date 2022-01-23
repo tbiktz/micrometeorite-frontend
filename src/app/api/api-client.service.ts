@@ -58,7 +58,7 @@ export class APIClient implements APIClientInterface {
       ...requestHttpOptions,
     };
 
-    return this.sendRequest<models.PredictionResult[]>('POST', path, options, JSON.stringify(args.body));
+    return this.sendRequest<models.PredictionResult[]>('POST', path, options, args.body);
   }
 
   /**

@@ -22,7 +22,8 @@ export class GuardedAPIClient extends APIClient {
     super(httpClient, domain, options);
   }
 
-  override addMicrometeoriteFind(
+  //@ts-ignore
+  addMicrometeoriteFind(
     args: {
       body: models.MicrometeoriteFind,  // MicrometeoriteFind object that needs to be added
     },
@@ -32,7 +33,8 @@ export class GuardedAPIClient extends APIClient {
       .pipe(tap((res: any) => guards.isPredictionResult(res) || console.error(`TypeGuard for response 'PredictionResult' caught inconsistency.`, res)));
   }
 
-  override getAllMicrometeoriteFinds(
+   //@ts-ignore
+  getAllMicrometeoriteFinds(
     requestHttpOptions?: HttpOptions
   ): Observable<models.MicrometeoriteFind[]> {
     return super.getAllMicrometeoriteFinds(requestHttpOptions)

@@ -77,7 +77,7 @@ export class CreateFindingComponent implements OnInit {
 
   mergeImagesAndForm(obj: MicrometeoriteFind): MicrometeoriteFind {
     obj.images?.map((element, index) => {
-      element.picture = this.images[index]
+      element.picture = this.images[index].split('base64,')[1];
     });
     return obj;
   }

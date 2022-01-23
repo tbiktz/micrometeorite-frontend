@@ -3,19 +3,13 @@
   <!-- Checkbox Column -->
   <ng-container matColumnDef="select">
     <th mat-header-cell *matHeaderCellDef>
-      <mat-checkbox (change)="$event ? masterToggle() : null"
-                    [checked]="selection.hasValue() && isAllSelected()"
-                    [indeterminate]="selection.hasValue() && !isAllSelected()"
-                    [aria-label]="checkboxLabel()"
-                    color='primary'>
+      <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+        [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()" color='primary'>
       </mat-checkbox>
     </th>
     <td mat-cell *matCellDef="let row">
-      <mat-checkbox (click)="$event.stopPropagation()"
-                    (change)="$event ? selection.toggle(row) : null"
-                    [checked]="selection.isSelected(row)"
-                    [aria-label]="checkboxLabel(row)"
-                    color='primary'>
+      <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+        [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)" color='primary'>
       </mat-checkbox>
     </td>
   </ng-container>
@@ -27,7 +21,7 @@
   <!-- Fund Datum Column -->
   <ng-container matColumnDef="micrometeoriteFindDate">
     <th mat-header-cell *matHeaderCellDef>Datum</th>
-    <td mat-cell *matCellDef="let element"> {{element.micrometeoriteFindDate | date: 'dd.MM.yyyy  '}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.micrometeoriteFindDate | date: 'dd.MM.yyyy '}} </td>
   </ng-container>
   <!-- Ort Column -->
   <ng-container matColumnDef="micrometeoriteFindPlace">
@@ -44,11 +38,11 @@
     <th mat-header-cell *matHeaderCellDef>Koordinaten</th>
     <td mat-cell *matCellDef="let element"> {{element.micrometeoriteFindCoordinates}} </td>
   </ng-container>
-    <!-- Durchmesser Column -->
-    <ng-container matColumnDef="micrometeoriteDiameter">
-      <th mat-header-cell *matHeaderCellDef>Durchmesser</th>
-      <td mat-cell *matCellDef="let element"> {{element.micrometeoriteDiameter}} </td>
-    </ng-container>
+  <!-- Durchmesser Column -->
+  <ng-container matColumnDef="micrometeoriteDiameter">
+    <th mat-header-cell *matHeaderCellDef>Durchmesser</th>
+    <td mat-cell *matCellDef="let element"> {{element.micrometeoriteDiameter}} </td>
+  </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openDetails(row)"></tr>

@@ -77,6 +77,24 @@ export class APIClient implements APIClientInterface {
   }
 
   /**
+   * Response generated for [ 200 ] HTTP response code.
+   */
+  getMicrometeoriteFindById(
+    args: {
+      micrometeoriteFindId: number,  // micrometeoriteFindId
+    },
+    requestHttpOptions?: HttpOptions
+  ): Observable<models.MicrometeoriteFind> {
+    const path = `/micrometeoriteFind/${args.micrometeoriteFindId}`;
+    const options: APIHttpOptions = {
+      ...this.options,
+      ...requestHttpOptions,
+    };
+
+    return this.sendRequest<models.MicrometeoriteFind>('GET', path, options);
+  }
+
+  /**
    * Response generated for [ missing ] HTTP response code.
    */
   deleteMicrometeoriteFind(

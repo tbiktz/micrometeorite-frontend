@@ -21,8 +21,8 @@ export class CreateFindingComponent implements OnInit {
   //@ts-ignore
   data: MicrometeoriteFind;
   imageCount: number | undefined;
-  numericRegex: RegExp = /^([0-9]*[\,|\.][0-9]*)$/;
-  alphanumericRegex: RegExp = /^[a-zA-Z0-9,\.äöüß\/]*$/;
+  numericRegex: RegExp = /^([0-9]*[\,|\.][0-9]*)|([0-9]*)$/;
+  alphanumericRegex: RegExp = /^[a-zA-Z0-9,\.äöüß\/ ]*$/;
 
   constructor(private _fb: FormBuilder,
     private createFindingService: CreateFindingStepperService,

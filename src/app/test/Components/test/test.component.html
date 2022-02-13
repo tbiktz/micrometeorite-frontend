@@ -1,0 +1,7 @@
+<div *ngIf="micro">
+    <p>{{micro?.micrometeoriteFindId}}</p>
+    <p>{{micro?.micrometeoriteFindDate | date: 'dd.MM.yyyy'}}</p>
+</div>
+<div *ngIf="!micro">
+    <p>Keine Daten vorhanden</p>
+</div>

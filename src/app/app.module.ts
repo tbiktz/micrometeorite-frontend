@@ -17,6 +17,7 @@ import { FooterComponent } from './footer/footer.component';
 import {MatIconModule} from '@angular/material/icon';
 import { LoginModule } from './login/login.module';
 import {MatButtonModule} from '@angular/material/button';
+import { TestModule } from './test/test.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatProgressSpinnerModule,
     MatIconModule,
     LoginModule,
-    MatButtonModule
+    MatButtonModule,
+    TestModule
   ],
   providers: [
     {
